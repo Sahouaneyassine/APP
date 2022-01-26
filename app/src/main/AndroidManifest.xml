@@ -15,15 +15,58 @@
         android:label="@string/activity_name_classification"
         android:roundIcon="@drawable/tbaicon"
         android:supportsRtl="true"
+        android:logo="@drawable/logo"
+
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ClassifierActivity"
-            android:label="@string/activity_name_classification"
-            android:screenOrientation="portrait">
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ocr.OcrCaptureActivity"
+            android:theme="@style/AppTheme.Dark.NoActionBar"
+            android:label="@string/str_ocr"/>
+
+        <activity android:name=".TranslateActivity"
+            android:label="@string/str_translate"
+            android:theme="@style/AppTheme.Dark"/>
+        <activity android:name=".TextManagerActivity"
+            android:label="@string/str_txt_man"
+            android:theme="@style/AppTheme.Dark">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SettingsActivity"
+            android:label="@string/str_settings"
+            android:theme="@style/AppTheme.Dark"/>
+
+
+        <activity
+            android:name=".ClassifierActivity"
+            android:label="@string/activity_name_classification"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
     </application>
 </manifest>
